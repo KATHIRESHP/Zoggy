@@ -5,7 +5,7 @@ const Home = () => {
     
     const navigate = useNavigate();
     useEffect(() => {
-        if (!localStorage.getItem('customer-details')) {
+        if (!localStorage.getItem('user-details')) {
             console.log("redirecting")
             navigate('/auth');
         }

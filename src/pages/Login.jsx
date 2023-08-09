@@ -37,7 +37,7 @@ const Login = () => {
                 <div className='w-11/12 relative md:w-8/12 lg:w-6/12 xl:w-3/12 flex justify-center items-center'>
                     <div className='h-[150px] w-[150px]  bg-gradient-to-r from-[#0E325E] to-orange-500 rounded-full absolute -top-11 -left-11'></div>
                     <div className='h-[150px] w-[150px]  bg-gradient-to-l from-[#0E325E] to-orange-500 rounded-full absolute -bottom-11 -right-11'></div>
-                    <form className='relative py-6 w-full backdrop-blur-sm rounded-lg bg-white/10 shadow-sm shadow-black  px-6 flex flex-col justify-center items-center'>
+                    <form className='relative py-6 w-full backdrop-blur-sm rounded-lg bg-white/10 shadow-lg shadow-black  px-6 flex flex-col justify-center items-center'>
                         <div className='text-3xl mt-4 text-white/80 font-titilium'>Sign in</div>
                         <input
                             placeholder='Email'
