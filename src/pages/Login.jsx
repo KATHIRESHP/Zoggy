@@ -9,6 +9,10 @@ const Login = () => {
     const navigate = useNavigate();
     const pwdWarnRef = useRef()
 
+    useEffect(() => {
+        localStorage.removeItem("user-details");
+    }, [])
+
     const submitHandler = (e) => {
         e.preventDefault();
         const email_regex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/ ;

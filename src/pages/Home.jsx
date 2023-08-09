@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
-import NavBar from '../components/NavBar';
 
 const Home = () => {
     
@@ -13,8 +12,7 @@ const Home = () => {
     },[])
   return (
     <div className='h-screen text-white/80'>
-        <NavBar/>
-        
+
     </div>  
   )
 }
