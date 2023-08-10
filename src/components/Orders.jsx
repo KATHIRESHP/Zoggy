@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Orders = () => {
   const navigate = useNavigate();
     const [user, setUser] = useState(undefined);
+
     useEffect(() => {
         if (!localStorage.getItem('user-details')) {
             console.log("redirecting")

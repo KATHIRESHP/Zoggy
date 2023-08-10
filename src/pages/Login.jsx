@@ -13,6 +13,7 @@ const Login = () => {
 
     useEffect(() => {
         localStorage.removeItem("user-details");
+        localStorage.removeItem("zoggy-cart");
     }, [])
 
     const submitHandler = (e) => {

@@ -1,7 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import { Carousel } from "@material-tailwind/react";
+import Lottie from 'lottie-react';
+import Lottie_hotel from '../asssets/Hotel.json'
+import Typewriter from 'typewriter-effect'
 
 const Home = () => {
 
@@ -19,16 +21,30 @@ const Home = () => {
   return (
     <div className='h-screen text-white/80 flex flex-col'>
       <NavBar />
-      <div className='mt-[10vh] '>
-        <div id="thumbnail-slider" class="mb-12 lg:mb-6 nav-inset-button carousel -mx-2" data-flickity='{ "cellAlign": "left", "wrapAround": true, "draggable": false, "adaptiveHeight": true, "prevNextButtons": true , "imagesLoaded": true }'>
-          <div class="max-w-full w-full px-2">
-            <img alt="title" class="w-full h-auto max-w-auto" src="src/img-min/project/project_1.jpg"/>
+      <div className=' bg-[#1a1a2e] m-5 rounded-md h-full flex justify-center items-center flex-col-reverse lg:flex-row'>
+        <div className='h-6/12 w-full font-comforta flex flex-col justify-end items-start pl-11 text-lg md:text-5xl lg:w-6/12 gap-2 md:gap-4 lg:gap-6 xl:gap-11 text-white font-bold'>
+          <div>
+            We Zoggy
           </div>
-          <div class="max-w-full w-full px-2">
-            <img alt="title" class="w-full h-auto max-w-auto" src="src/img-min/project/project_2.jpg"/>
+          <div className='flex'>
+            <div>India's &nbsp;</div>
+            <div className='font-pacifico text-2xl md:text-6xl'>
+              <Typewriter
+                options={{
+                  strings: [` Fastest`, ` Largest`, ` Quickest`],
+                  autoStart: true,
+                  loop: true
+                }}
+              />
+            </div>
           </div>
-          <div class="max-w-full w-full px-2">
-            <img alt="title" class="w-full h-auto max-w-auto" src="src/img-min/project/project_3.jpg"/>
+          <div>
+            Food Delivering Brand.
+          </div>
+        </div>
+        <div className='h-6/12 lg:bg-white/10 rounded lg:backdrop-blur-sm w-10/12 lg:w-6/12 z-0 flex justify-center items-center'>
+          <div className='h-full w-full md:w-8/12 z-0'>
+            <Lottie animationData={Lottie_hotel} />
           </div>
         </div>
       </div>

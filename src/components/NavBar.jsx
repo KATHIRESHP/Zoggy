@@ -10,14 +10,14 @@ const NavBar = () => {
 
     const links = [
         { name: "Home", link: "/" },
-        { name: "Your Order", link: "/order" },
+        { name: "Your Order", link: "/orders" },
         { name: "Explore", link: "/order" },
         { name: "Logout", link: "/auth" },
     ]
 
     return (
         <>
-            <div className='bg-white md:flex md:justify-between md:items-center font-comforta text-black py-3 fixed w-screen shadow-xl shadow-orange-950'>
+            <div className='bg-white md:flex md:justify-between md:items-center font-comforta text-black py-3 sticky top-2 w-screen shadow-xl shadow-orange-950 z-50'>
                 <div className='flex gap-1 md:gap-4 ml-4 text-lg md:text-3xl justify-start items-center'>
                     <span className='bg-gradient-to-r from-[#0E325E] to-orange-500 py-2 px-4 rounded-full font-serif font-bold text-white/80'>{user?.username[0]}</span>
                     {user?.username}

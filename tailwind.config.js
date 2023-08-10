@@ -9,7 +9,8 @@ module.exports = {
       fontFamily: {
         titilium: ["Titillium Web", "sans-serif"],
         comforta: ["Comfortaa", "cursive"],
-        poppins: ["Poppins", "sans-serif"]
+        poppins: ["Poppins", "sans-serif"],
+        pacifico: ["Pacifico", "cursive"]
       }
     },
   },
