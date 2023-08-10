@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
+import { loginRoute } from '../APIutils/Apiroutes';
 
 const Login = () => {
 
@@ -21,6 +23,22 @@ const Login = () => {
         {
             if(password_regex.test(password))
             {
+                axios.post(loginRoute, {
+                    email:email,
+                    password:password
+                })
+                .then((data) => {
+                    toast.success("Login success");
+                    console.log(JSON.stringify(data.data));
+                    localStorage.setItem("user-details", JSON.stringify(data.data.user));
+                    setTimeout(() => {
+                        navigate('/');
+                    }, 4000)
+                })
+                .catch((error) => {
+                    toast.success("Error in sending login request");
+                    console.log(error);
+                })
             }
             else
             {

@@ -11,11 +11,6 @@ const App = () => {
   return (
     <div className='bg-[#1a1a2e] relative'>
         <BrowserRouter>
-        {
-          localStorage.getItem("user-details")
-          &&
-          <NavBar/>
-        }
             <Routes>
               <Route path='/'>
                 <Route index element={<Home/>}/>

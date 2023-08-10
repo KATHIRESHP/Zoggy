@@ -8,7 +8,8 @@ module.exports = {
     extend: {
       fontFamily: {
         titilium: ["Titillium Web", "sans-serif"],
-        comforta: ["Comfortaa", "cursive"]
+        comforta: ["Comfortaa", "cursive"],
+        poppins: ["Poppins", "sans-serif"]
       }
     },
   },

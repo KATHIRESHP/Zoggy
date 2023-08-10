@@ -21,14 +21,17 @@ const Register = () => {
         if (password_regex.test(password)) {
             axios.post(registerRoute, { name: name, email: email, password: password })
                 .then((data) => {
-                    toast.success(data.data.msg);
                     if(data.data.status)
                     {
                         localStorage.setItem("user-details",  JSON.stringify(data.data.user));
-                        toast.success("Redirecting...");
+                        toast.success("Successfull :) \nRedirecting...");
                         setTimeout(() => {
                             navigate('/');
                         }, 4000);
+                    }
+                    else
+                    {
+                        toast.error(data.data.msg);
                     }
                 })
                 .catch((error) => {
