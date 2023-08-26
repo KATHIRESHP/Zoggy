@@ -40,7 +40,7 @@ const Orders = () => {
       status: false
     })
     .then((data) => {
-      console.log(`cart send success`);
+      toast.success("Order  placed :)");
     })
     .catch((error) => {
       console.log("error in cart data to server")
@@ -48,6 +48,7 @@ const Orders = () => {
   }
   return (
     <div className='text-white/80 h-screen overflow-auto'>
+      <Toaster/>
       <NavBar />
       <div>
         {

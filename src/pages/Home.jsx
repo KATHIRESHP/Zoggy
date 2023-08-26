@@ -11,7 +11,6 @@ const Home = () => {
 
   const navigate = useNavigate();
   const [user, setUser] = useState();
-  const [cart, setCart] = useState();
 
   const getOrderItems = async () => {
     axios.post(getOrdersRoute, {

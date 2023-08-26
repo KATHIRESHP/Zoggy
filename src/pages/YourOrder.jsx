@@ -1,25 +1,50 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import NavBar from '../components/NavBar';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import Empty from '../asssets/Empty.json'
-
+import { getOrdersRoute } from '../APIutils/Apiroutes';
+import axios from 'axios';
 const YourOrder = () => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState();
   const [delivered, setDelivered] = useState()
   const [undelivered, setUndelivered] = useState()
-  useEffect(() => {
+  const [user, setUser] = useState();
+
+ 
+  useLayoutEffect(() => {
     if (!localStorage.getItem('user-details')) {
       console.log("redirecting")
       navigate('/auth');
     }
     else {
-      if (localStorage.getItem('zoggy-orders')) {
-        setOrders(JSON.parse(localStorage.getItem('zoggy-orders')));
-      }
+      setUser(JSON.parse(localStorage.getItem("user-details")));
     }
   }, [])
+
+  useEffect(() => {
+    if(user)
+    {
+      fetchOrders();
+    }
+  }, [user])
+
+  const fetchOrders = async () => {
+    console.log(user);
+    if (localStorage.getItem('zoggy-orders')) {
+      axios.post(getOrdersRoute, {
+        email:user.email
+      })
+      .then((data) => {
+        localStorage.setItem('zoggy-orders', JSON.stringify(data.data.orders));
+        setOrders(data.data.orders);
+      })
+      .catch((error) => {
+        console.log("Error in fetching orders");
+      })
+    }
+  }
 
   useEffect(() => {
     if (orders) {
@@ -59,9 +84,9 @@ const YourOrder = () => {
                                   <div key={i}
                                     className='bg-gradient-to-r from-[#0E325E] to-orange-500 transition-all duration-700 ease-in-out group-hover:opacity-100 opacity-0  '>
                                     <div className=' flex justify-around py-2 rounded-xl'>
-                                      <div className='flex justify-evenly w-full'>{t.name}</div>
-                                      <div className='flex justify-evenly w-full'>{t.price}</div>
-                                      <div className='flex justify-evenly w-full'>{t.total}</div>
+                                      <div className='flex justify-evenly w-full' title='Name of the order'>{t.name}</div>
+                                      <div className='flex justify-evenly w-full' title='Quantity'>{t.count}</div>
+                                      <div className='flex justify-evenly w-full' title='Net Amount  ₹'>{t.total}</div>
                                     </div>
                                   </div>
                                 )
