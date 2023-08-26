@@ -92,7 +92,7 @@ const Orders = () => {
               <div className='absolute font-mono top-1/4 left-1/4 md:left-1/3 text-xl md:text-2xl lg:text-3xl xl:text-5xl z-30'>
                 Ops! Your cart is Empty
               </div>
-              <div className='flex justify-center items-center flex-col z-0'>
+              <div className='fixed top-1/4 md:top-auto md:left-1/3 flex justify-center items-center flex-col z-0'>
                 <div className='drop-shadow-xl'>
                   <Lottie animationData={Empty} />
                 </div>

@@ -7,6 +7,8 @@ import parota from '../asssets/parota.jpeg'
 import kalaki from '../asssets/kalaki.jpeg'
 import omelete from '../asssets/omelete.jpg'
 import halfboil from '../asssets/halfboil.png'
+import axios from 'axios';
+import { updateCart } from '../APIutils/Apiroutes';
 
 const Order = () => {
   const navigate = useNavigate();
@@ -65,8 +67,8 @@ const Order = () => {
   }, [])
 
   const increaseCount = (index) => {
-    toast.success("Click add to cart at the bottom to update", {
-      duration: 6000
+    toast.success("Update the cart", {
+      duration: 1000
     });
     const temp = [...items];
     temp[index].count += 1;
@@ -74,18 +76,35 @@ const Order = () => {
   }
 
   const reduceCount = (index) => {
-    toast.success("Click add to cart at the bottom to update", {
-      duration: 6000
-    });
     const temp = [...items];
-    temp[index].count -= 1;
-    setItems(temp);
+    if(temp[index].count > 0)
+    {
+      toast.success("Update the cart", {
+        duration: 1000
+      });
+      temp[index].count -= 1;
+      setItems(temp);
+    }
+    else
+      toast.error("Item not in the cart", {
+    duration: 500});
   }
 
   const addToCart = (e) => {
     const temp = items.filter((item) => item.count > 0);
     localStorage.setItem('zoggy-cart', JSON.stringify(temp));
     toast.success("Cart updated successfully :)");
+    
+    axios.post(updateCart, {
+      email: user.email,
+      items: temp
+    })
+    .then((data) => {
+      console.log(data.data);
+    })
+    .catch((e) => {
+      console.log("Error in updating cart data");
+    })
   }
   return (
     <div className='h-screen text-white/80 overflow-auto'>

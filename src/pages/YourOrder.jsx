@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../components/NavBar';
 import { useNavigate } from 'react-router-dom';
+import Lottie from 'lottie-react';
+import Empty from '../asssets/Empty.json'
 
 const YourOrder = () => {
   const navigate = useNavigate();
@@ -33,9 +35,9 @@ const YourOrder = () => {
   return (
     <div className='h-screen overflow-auto'>
       <NavBar />
-      <div className='bg-white/20 m-5 h-full overflow-auto '>
+      <div className='bg-[#1a1a2e] m-5 h-full overflow-auto '>
         {
-          orders
+          orders?.length > 0
             ?
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='h-full hover:z-50'>
@@ -111,7 +113,14 @@ const YourOrder = () => {
             </div>
             :
             <>
-              NO items
+              <div className='absolute text-white font-mono top-1/4 left-1/4 md:left-1/3 text-xl md:text-2xl lg:text-3xl xl:text-5xl z-30'>
+                Ops! You have nothing before
+              </div>
+              <div className='fixed top-1/4 md:top-auto md:left-1/3 flex justify-center items-center flex-col z-0'>
+                <div className='drop-shadow-xl'>
+                  <Lottie animationData={Empty} />
+                </div>
+              </div>
             </>
         }
       </div>

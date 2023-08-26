@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import Lottie from 'lottie-react';
 import Lottie_hotel from '../asssets/Hotel.json'
 import Typewriter from 'typewriter-effect'
-import { getOrdersRoute } from '../APIutils/Apiroutes';
+import { getCart, getOrdersRoute } from '../APIutils/Apiroutes';
 import axios from 'axios';
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
   const [user, setUser] = useState();
   const [cart, setCart] = useState();
 
-  const getCartItems = async () => {
+  const getOrderItems = async () => {
     axios.post(getOrdersRoute, {
       email: user.email
     })
@@ -35,9 +35,24 @@ const Home = () => {
     }
   }, [])
 
+  const getCartItems = () => {
+    axios.post(getCart, {
+      email: user.email
+    })
+    .then((data) => {
+      console.log("success in cart times");
+      console.log(data.data.cart[0].items);
+      localStorage.setItem('zoggy-cart', JSON.stringify(data.data.cart[0].items));
+    })
+    .catch((error) => {
+      console.log("Error in getting cart items");
+    })
+  }
+
   useEffect(() => {
     if(user)
     {
+      getOrderItems();
       getCartItems();
     }
   }, [user])
@@ -65,7 +80,7 @@ const Home = () => {
             Food Delivering Brand.
           </div>
         </div>
-        <div className='h-6/12 lg:bg-white/10 rounded lg:backdrop-blur-sm w-10/12 lg:w-6/12 z-0 flex justify-center items-center'>
+        <div className='h-6/12 rounded lg:backdrop-blur-sm w-10/12 lg:w-6/12 z-0 flex justify-center items-center'>
           <div className='h-full w-full md:w-8/12 z-0'>
             <Lottie animationData={Lottie_hotel} />
           </div>
