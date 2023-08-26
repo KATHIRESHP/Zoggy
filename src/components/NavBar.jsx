@@ -10,8 +10,9 @@ const NavBar = () => {
 
     const links = [
         { name: "Home", link: "/" },
-        { name: "Your Order", link: "/orders" },
+        { name: "Cart", link: "/cart" },
         { name: "Explore", link: "/order" },
+        { name: "Your order", link: "/yourorder" },
         { name: "Logout", link: "/auth" },
     ]
 
@@ -33,7 +34,7 @@ const NavBar = () => {
                         <i class="bi bi-list"></i>
                     }
                 </button>
-                <div className={`flex flex-col md:flex-row md:w-7/12 lg:w-5/12 xl:w-4/12 md:justify-evenly md:items-center font-poppins absolute md:static w-screen transition-all ease-in-out duration-500 ${show ? "" : "-top-[500px]" }`}>
+                <div className={`flex flex-col md:flex-row md:w-8/12 lg:w-6/12 xl:w-5/12 md:justify-evenly md:items-center font-poppins absolute md:static w-screen transition-all ease-in-out duration-500 ${show ? "" : "-top-[500px]" }`}>
                     {
                         links.map((link, index) => {
                             return (

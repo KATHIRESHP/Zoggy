@@ -3,9 +3,9 @@ import {BrowserRouter, Outlet, Route, Routes} from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Home from './pages/Home'
-import Orders from './components/Orders'
+import Cart from './components/Cart'
 import Order from './components/Order'
-import NavBar from './components/NavBar'
+import YourOrder from './pages/YourOrder'
 
 const App = () => {
   return (
@@ -14,8 +14,9 @@ const App = () => {
             <Routes>
               <Route path='/'>
                 <Route index element={<Home/>}/>
-                <Route path='/orders' element={<Orders/>}/>
+                <Route path='/cart' element={<Cart/>}/>
                 <Route path='/order' element={<Order/>}/>
+                <Route path='/yourorder' element={<YourOrder/>}/>
               </Route>
               <Route path='/auth'>
                 <Route index element={<Login/>}/>

@@ -14,6 +14,7 @@ const Login = () => {
     useEffect(() => {
         localStorage.removeItem("user-details");
         localStorage.removeItem("zoggy-cart");
+        localStorage.removeItem("zoggy-orders");
     }, [])
 
     const submitHandler = (e) => {

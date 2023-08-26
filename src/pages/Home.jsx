@@ -4,11 +4,27 @@ import NavBar from '../components/NavBar';
 import Lottie from 'lottie-react';
 import Lottie_hotel from '../asssets/Hotel.json'
 import Typewriter from 'typewriter-effect'
+import { getOrdersRoute } from '../APIutils/Apiroutes';
+import axios from 'axios';
 
 const Home = () => {
 
   const navigate = useNavigate();
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState();
+  const [cart, setCart] = useState();
+
+  const getCartItems = async () => {
+    axios.post(getOrdersRoute, {
+      email: user.email
+    })
+    .then((data) => {
+      localStorage.setItem("zoggy-orders", JSON.stringify(data.data.orders));
+      console.log("Request for order success \n", data.data)
+    })
+    .catch((error) => {
+      console.log("error in sending req for order\n", error);
+    })
+  }
   useLayoutEffect(() => {
     if (!localStorage.getItem('user-details')) {
       console.log("redirecting")
@@ -18,6 +34,13 @@ const Home = () => {
       setUser(JSON.parse(localStorage.getItem("user-details")));
     }
   }, [])
+
+  useEffect(() => {
+    if(user)
+    {
+      getCartItems();
+    }
+  }, [user])
   return (
     <div className='h-screen text-white/80 flex flex-col'>
       <NavBar />
@@ -28,7 +51,7 @@ const Home = () => {
           </div>
           <div className='flex'>
             <div>India's &nbsp;</div>
-            <div className='font-pacifico text-2xl md:text-6xl'>
+            <div className='font-Tektur text-2xl font-light md:text-6xl'>
               <Typewriter
                 options={{
                   strings: [` Fastest`, ` Largest`, ` Quickest`],

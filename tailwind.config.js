@@ -10,7 +10,8 @@ module.exports = {
         titilium: ["Titillium Web", "sans-serif"],
         comforta: ["Comfortaa", "cursive"],
         poppins: ["Poppins", "sans-serif"],
-        pacifico: ["Pacifico", "cursive"]
+        pacifico: ["Pacifico", "cursive"],
+        Tektur: ["Tektur", "cursive"]
       }
     },
   },
