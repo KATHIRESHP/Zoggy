@@ -1,21 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import AdminNav from '../components/AdminNav'
 import { getAllOrder } from '../APIutils/Apiroutes';
 import axios from 'axios';
 
 const AdminControl = () => {
-    const [order, setOrders] = useState([]);
+    const [orders, setOrders] = useState([]);
+    const isFirstRender = useRef(true);
 
     useEffect(() => {
-        
+        if(isFirstRender.current)
+        {
+            isFirstRender.current = false;
+            requestOrders();
+        }
     }, [])
+
+    useEffect(() => {
+        if(orders)
+        {
+            console.log("Orders");
+            console.log(orders);
+        }
+    }, [orders])
 
     const requestOrders = () => {
         axios.post(getAllOrder, {admin :true})
         .then((data) => {
-            console.log("Orders got success");
             setOrders(data.data.orders);
+            console.log("Orders got success");
+            console.log(data.data.orders);
         })
         .catch((e) => {
             toast.error("Error in fetching orders\n" + e);
