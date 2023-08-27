@@ -37,7 +37,7 @@ const Orders = () => {
     axios.post(placeOrderRoute, {
       email: user.email,
       items: temp,
-      status: false
+      status: "ordered"
     })
     .then((data) => {
       toast.success("Order  placed :)");

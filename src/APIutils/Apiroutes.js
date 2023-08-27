@@ -6,3 +6,4 @@ export const placeOrderRoute =`${host}/order/placeorder`
 export const getOrdersRoute =`${host}/order/getorders`
 export const updateCart =`${host}/order/updatecart`
 export const getCart =`${host}/order/getcart`
+export const getAllOrder =`${host}/admin/getallorders`

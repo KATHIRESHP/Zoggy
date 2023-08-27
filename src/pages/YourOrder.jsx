@@ -48,10 +48,10 @@ const YourOrder = () => {
 
   useEffect(() => {
     if (orders) {
-      let temp = orders.filter((order) => order.status === true);
+      let temp = orders.filter((order) => order.status === "delivered");
       setDelivered(temp);
       console.log(delivered)
-      temp = orders.filter((order) => order.status === false);
+      temp = orders.filter((order) => order.status === "ordered");
       setUndelivered(temp);
       console.log(undelivered)
 

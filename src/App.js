@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import Cart from './components/Cart'
 import Order from './components/Order'
 import YourOrder from './pages/YourOrder'
+import AdminAuth from './pages/AdminAuth'
+import AdminControl from './pages/AdminControl'
 
 const App = () => {
   return (
@@ -21,6 +23,10 @@ const App = () => {
               <Route path='/auth'>
                 <Route index element={<Login/>}/>
                 <Route path='/auth/register' element={<Register/>}/>
+              </Route>
+              <Route path='/admin'>
+                  <Route path='/admin/auth' element={<AdminAuth/>}/>
+                  <Route path='/admin/control' element={<AdminControl/>}/>
               </Route>
             </Routes>
         </BrowserRouter>
